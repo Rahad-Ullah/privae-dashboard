@@ -11,8 +11,6 @@ import BackButton from "@/components/button/BackButton";
 
 const SingleBookingPage = async ({ params }: { params: any }) => {
   const { id } = await params;
-  //console.log("Single Customer Id : ", id)
-  // const order: any = dymmySingleBookingData;
 
   const resCustomer = await myFetch(`/user/${id}`, {
     method: "GET",
