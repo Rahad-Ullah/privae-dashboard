@@ -8,26 +8,28 @@ export type Props = {
 
 export default function KpiLeft({analytic}:{analytic:Props}) {
   return (
-    <div className="w-60 px-2 py-3 bg-[#272727] rounded-lg font-sans text-white shadow-xl">
-      {/* Header */}
-      <h3 className="text-gray-300 text-lg font-medium mb-2">
-        {analytic.title}
-      </h3>
+    <div className="w-full h-full px-4 py-4 bg-[#272727] rounded-lg font-sans text-white shadow-xl flex flex-col justify-between">
+      <div>
+        {/* Header */}
+        <h3 className="text-neutral-300 text-lg font-medium mb-2">
+          {analytic.title}
+        </h3>
 
-      {/* Main Value */}
-      <div className="text-2xl font-bold tracking-tight mb-4">
-        {analytic.value}
-      </div>
+        {/* Main Value */}
+        <div className="text-2xl font-bold tracking-tight mb-4">
+          {analytic.value}
+        </div>
 
-      {/* Growth Metric */}
-      <div className="flex items-center gap-1 mb-4">
-        <ArrowUpRight className="text-green-500 w-5 h-5" strokeWidth={3} />
-        <span className="text-green-500 text-sm">{analytic.growth}</span>
-        <span className="text-gray-300 text-sm">higher than last week</span>
+        {/* Growth Metric */}
+        <div className="flex items-center gap-1 mb-4">
+          <ArrowUpRight className="text-green-500 w-5 h-5" strokeWidth={3} />
+          <span className="text-green-500 text-sm">{analytic.growth}</span>
+          <span className="text-neutral-300 text-sm">higher than last week</span>
+        </div>
       </div>
 
       {/* Sparkline Graph (SVG) */}
-      <div className="w-full h-16">
+      <div className="w-full h-16 mt-auto">
         <svg
           viewBox="0 0 100 50"
           className="w-full h-full overflow-visible"

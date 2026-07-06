@@ -31,7 +31,7 @@ const Customers = async ({ searchParams }: { searchParams: any }) => {
   const customers = resCustomers?.data?.map((item: any) => {
     const rating = item?.avg_rating && Number(item?.avg_rating).toFixed(2)
     return {
-      id: item?._id,
+      id: item?.userId,
       name: item?.name || "N/A",
       email: item?.email || "N/A",
       phone: item?.contact || "N/A",

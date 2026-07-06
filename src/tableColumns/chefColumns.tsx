@@ -3,10 +3,10 @@ import {  ICustomer} from "@/types/columnTypes";
 
 export const chefColumns: ColumnDef<ICustomer>[] = [
   {
-    accessorKey: "id",
+    accessorKey: "userId",
     header: () => <div className="ps-2">Chef ID</div>,
     cell: ({ row }) => (
-      <div className="capitalize ps-2">{row.getValue("id")}</div>
+      <div className="capitalize ps-2">{row.getValue("userId")}</div>
     ),
   },
   {

@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getToken } from "./utils/getToken";
+
 import { myFetch } from "./utils/myFetch";
 import { EUserRole } from "./enums/userEnums";
-import { deleteCookie } from "cookies-next/client";
+
 
 
  
@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
     "/terms-condition",
   ].includes(path);
  
-  const token = await getToken();
+  const token = request.cookies.get("accessToken")?.value;
  
   
   if (!isPublicPath && !token) {
@@ -27,13 +27,14 @@ export async function middleware(request: NextRequest) {
  
   
   if (token && !isPublicPath) {
-    const res = await myFetch("/user/profile");
+    const res = await myFetch("/user/profile", { token });
     const userRole = res?.data?.role;
  
-    if (userRole !== EUserRole.SUPER_ADMIN) {
-      deleteCookie('accessToken');
-      deleteCookie('userRole');
-      return NextResponse.redirect(new URL("/login", request.nextUrl));
+    if (userRole !== EUserRole.SUPER_ADMIN && userRole !== EUserRole.ADMIN) {
+      const response = NextResponse.redirect(new URL("/login", request.nextUrl));
+      response.cookies.delete('accessToken');
+      response.cookies.delete('userRole');
+      return response;
     }
   }
 }

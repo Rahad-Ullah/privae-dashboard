@@ -65,12 +65,12 @@ export const accessColumns: ColumnDef<IAccess>[] = [
     id: "action",
     header: () => <div className="text-center">Action</div>,
     cell: ({ row }) => (
-      <p className="flex items-center justify-center gap-1">
+      <div className="flex items-center justify-center gap-1">
         <CustomModal trigger={<RiEdit2Line onClick={() => console.log("Note Id : ", row.original)} className="size-6 cursor-pointer text-gray-600" />} title={"Edit User"} >
           <AddUser ExistUser={row.original}/>
         </CustomModal>
         <GrLock onClick={() => BlockUnblockUser(row.original.id)} className="size-5 cursor-pointer text-gray-600" />
-      </p>
+      </div>
     ),
   }
 ]

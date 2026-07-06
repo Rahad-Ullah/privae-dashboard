@@ -26,24 +26,22 @@ export function CustomModal({
 
   return (
     <Dialog>
-      <form>
-        <DialogTrigger asChild>
-          {trigger}
-        </DialogTrigger>
-        <DialogContent className={`${contentClass}`}>
-          <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
-          </DialogHeader>
+      <DialogTrigger asChild>
+        {trigger}
+      </DialogTrigger>
+      <DialogContent className={`${contentClass}`}>
+        <DialogHeader>
+          <DialogTitle>{title}</DialogTitle>
+        </DialogHeader>
 
-          <div className="py-4">{children}</div>
+        <div className="py-4">{children}</div>
 
-          <DialogFooter className="hidden">
-            <DialogClose id="closedCustomModal" asChild>
-              <Button variant="outline">Cancel</Button>
-            </DialogClose>
-          </DialogFooter>
-        </DialogContent>
-      </form>
+        <DialogFooter className="hidden">
+          <DialogClose id="closedCustomModal" asChild>
+            <Button variant="outline">Cancel</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
     </Dialog>
   )
 }

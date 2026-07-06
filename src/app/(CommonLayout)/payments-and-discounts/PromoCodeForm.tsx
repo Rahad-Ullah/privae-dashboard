@@ -144,7 +144,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
             <input
               {...register("name")}
               required
-              className="w-full bg-gray-100 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black/20"
+              className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 outline-none focus:ring-2 focus:ring-black/20"
               placeholder="Enter name"
             />
           </div>
@@ -157,7 +157,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
             <input
               {...register("code")}
               required
-              className="w-full bg-gray-100 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black/20"
+              className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 outline-none focus:ring-2 focus:ring-black/20"
               placeholder="Enter code"
             />
           </div>
@@ -176,7 +176,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
                   value={field.value}
                   onValueChange={field.onChange}
                 >
-                  <SelectTrigger className="authinput bg-[#F2F2F2] w-full">
+                  <SelectTrigger className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 shadow-none outline-none focus:ring-2 focus:ring-black/20">
                     <SelectValue placeholder="Select type" />
                   </SelectTrigger>
 
@@ -202,8 +202,8 @@ export default function PromoCodeForm({ id }: { id?: string }) {
               required
               min={1}
               max={100}
-              {...register("value",)}
-              className="w-full bg-gray-100 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black/20"
+              {...register("value")}
+              className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 outline-none focus:ring-2 focus:ring-black/20"
               placeholder="10"
             />
           </div>
@@ -220,7 +220,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
               type="date"
               required
               {...register("from")}
-              className="w-full bg-gray-100 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black/20"
+              className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 outline-none focus:ring-2 focus:ring-black/20"
             />
           </div>
 
@@ -233,7 +233,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
               type="date"
               required
               {...register("until")}
-              className="w-full bg-gray-100 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black/20"
+              className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 outline-none focus:ring-2 focus:ring-black/20"
             />
           </div>
         </div>
@@ -249,7 +249,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
               required
               min={1}
               {...register("usageLimit")}
-              className="w-full bg-gray-100 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-black/20"
+              className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 outline-none focus:ring-2 focus:ring-black/20"
               placeholder="10"
             />
           </div>
@@ -266,8 +266,8 @@ export default function PromoCodeForm({ id }: { id?: string }) {
                   value={field.value}
                   onValueChange={field.onChange}
                 >
-                  <SelectTrigger className="authinput bg-[#F2F2F2] w-full">
-                    <SelectValue placeholder="Select role" />
+                  <SelectTrigger className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 shadow-none outline-none focus:ring-2 focus:ring-black/20">
+                    <SelectValue placeholder="Select status" />
                   </SelectTrigger>
 
                   <SelectContent>
@@ -284,7 +284,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 items-end gap-4">
-          {/* Status */}
+          {/* Applies To */}
           <div className="flex flex-col gap-1">
             <label className="block text-sm font-medium mb-1">Applies To</label>
             <Controller
@@ -296,7 +296,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
                   value={field.value}
                   onValueChange={field.onChange}
                 >
-                  <SelectTrigger className="authinput bg-[#F2F2F2] w-full">
+                  <SelectTrigger className="w-full bg-gray-100 border-none rounded-xl px-4 h-12 shadow-none outline-none focus:ring-2 focus:ring-black/20">
                     <SelectValue placeholder="Select applies to" />
                   </SelectTrigger>
 
@@ -315,7 +315,7 @@ export default function PromoCodeForm({ id }: { id?: string }) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-black text-white py-2 h-12 rounded-xl font-medium hover:bg-black/90 transition"
+            className="w-full bg-black text-white py-2 h-12 rounded-xl font-medium hover:bg-black/90 transition cursor-pointer"
           >
             {isSubmitting ? "Saving..." : "Save"}
           </button>

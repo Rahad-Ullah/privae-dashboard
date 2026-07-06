@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { userImage } from "@/app/assets/assets";
 import { ChevronRight } from "lucide-react";
 import { GoStarFill } from "react-icons/go";
-import Image from "next/image";
+import AvatarImage from "@/components/cui/AvatarImage";
 import SingleChefComponent from "./SingleChef";
 import { myFetch } from "@/utils/myFetch";
 import { formatUrl } from "@/utils/formatUrl";
@@ -19,13 +18,13 @@ const SingleChefPage = async ({ params }: { params: any }) => {
   })
   const chefDetails = resChef?.data
 
-  //console.log("Chef Details : ", chefDetails)
+  console.log("Chef Details : ", chefDetails)
 
   return (
     <div className="pb-4 xl:pb-6">
       <div className="flex justify-between items-center px-4 pb-8">
         <div className="flex items-center gap-3">
-          <Image src={formatUrl(chefDetails?.image) || userImage} width={100} height={100} alt="user Logo" className='w-16 h-16 object-cover rounded-full' />
+          <AvatarImage src={formatUrl(chefDetails?.image)} width={100} height={100} alt="user Logo" className='w-16 h-16 object-cover rounded-full' />
           <div>
             <p className="font-bold text-xl text-gray-800">{chefDetails?.name}</p>
             <p className="flex items-center gap-1 text-gray-600">
@@ -34,12 +33,12 @@ const SingleChefPage = async ({ params }: { params: any }) => {
             </p>
           </div>
         </div>
-        <p className="flex items-center gap-1 font-semibold">
+        <div className="flex items-center gap-1 font-semibold">
           <BackButton>
             <span className="flex items-center text-gray-700">Chefs <ChevronRight className="size-6" /></span>
           </BackButton>
-          <span className="text-[#FD713F]">ID {id}</span>
-        </p>
+          <span className="text-[#FD713F]">ID {chefDetails?.userId}</span>
+        </div>
       </div>
       <SingleChefComponent chefDetails={chefDetails} id={id} />
     </div>

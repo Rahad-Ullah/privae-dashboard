@@ -62,6 +62,15 @@ export default async function Home({ searchParams }: { searchParams: any }) {
     }).format(amount);
   };
 
+  const formatNumber = (input: string | number, decimals: number = 0): string => {
+    const num = typeof input === 'string' ? parseFloat(input) : input;
+    if (isNaN(num)) return '0';
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    }).format(num);
+  };
+
 
   return (
     <div className="px-4 xl:px-6 pb-4">
@@ -72,18 +81,18 @@ export default async function Home({ searchParams }: { searchParams: any }) {
         {recurring === "Custom" && <PopoverDemo />}
       </div>
       <div className="px-2 flex gap-3 xl:gap-4">
-        <div>
+        <div className="flex w-60">
           <KpiLeft analytic={{ title: "Total Revenue", value: formatMoney(resSummary?.data?.grossMargin), growth: "9.48%" }} />
         </div>
         <div className="flex-1 grid grid-cols-4 gap-3 xl:gap-4">
           <KpiRight analytic={{ title: "Total Gross Margin", value: formatMoney(resSummary?.data?.grossMargin), growth: "9.48%" }} />
-          <KpiRight analytic={{ title: "# of Orders", value: resSummary?.data?.totalOrders, growth: "9.48%" }} />
-          <KpiRight analytic={{ title: "# of Users", value: resSummary?.data?.totalUsers, growth: "9.48%" }} />
-          <KpiRight analytic={{ title: "# of Chefs", value: resSummary?.data?.totalChef, growth: "9.48%" }} />
-          <KpiRight analytic={{ title: "Average Bookings per Week", value: resSummary?.data?.avgBooking, growth: "9.48%" }} />
+          <KpiRight analytic={{ title: "# of Orders", value: formatNumber(resSummary?.data?.totalOrders, 0), growth: "9.48%" }} />
+          <KpiRight analytic={{ title: "# of Users", value: formatNumber(resSummary?.data?.totalUsers, 0), growth: "9.48%" }} />
+          <KpiRight analytic={{ title: "# of Chefs", value: formatNumber(resSummary?.data?.totalChef, 0), growth: "9.48%" }} />
+          <KpiRight analytic={{ title: "Average Bookings per Week", value: formatNumber(resSummary?.data?.avgBooking, 2), growth: "9.48%" }} />
           <KpiRight analytic={{ title: "Average Revenue per Booking", value: formatMoney(resSummary?.data?.avgRevineue), growth: "9.48%" }} />
-          <KpiRight analytic={{ title: "Average Booking Length", value: resSummary?.data?.avgBookingLength, growth: "9.48%" }} />
-          <KpiRight analytic={{ title: "Average Dishes per Booking", value: resSummary?.data?.avgDishesPerBooking, growth: "9.48%" }} />
+          <KpiRight analytic={{ title: "Average Booking Length", value: formatNumber(resSummary?.data?.avgBookingLength, 2), growth: "9.48%" }} />
+          <KpiRight analytic={{ title: "Average Dishes per Booking", value: formatNumber(resSummary?.data?.avgDishesPerBooking, 2), growth: "9.48%" }} />
         </div>
       </div>
       <div className="pt-4 space-y-4 px-2">
