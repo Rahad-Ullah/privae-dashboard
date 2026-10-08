@@ -25,7 +25,7 @@ const stepDatas: StepDataType[] = [
 
 
 const AdminPage = async ({ searchParams }: { searchParams: any }) => {
-  const { query, step, bookingStatus, page } = await searchParams;
+  const { step } = await searchParams;
 
   const resAccess = await myFetch(`/admin`, {
     method: "GET",
