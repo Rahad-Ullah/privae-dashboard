@@ -37,7 +37,7 @@ export const myFetch = async <T = any>(
     revalidate = DEFAULT_REVALIDATE,
     token,
     headers = {},
-    cache,
+    cache = "no-cache",
   }: FetchOptions = {}
 ): Promise<FetchResponse<T>> => {
   const accessToken = token || (await getToken());
@@ -56,9 +56,7 @@ export const myFetch = async <T = any>(
   if (tags?.length) nextConfig.tags = tags;
   if (revalidate !== undefined) nextConfig.revalidate = revalidate;
 
-  const resolvedCache: RequestCache = !isGet
-    ? "no-store"
-    : cache ?? (revalidate === false ? "force-cache" : "default");
+  const resolvedCache: RequestCache = !isGet ? "no-store" : cache;
 
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}${url}`, {
